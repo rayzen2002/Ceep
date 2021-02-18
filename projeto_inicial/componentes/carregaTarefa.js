@@ -1,4 +1,5 @@
-import{ Tarefa } from "./criaTarefa.js"
+import { criaData } from "./criaData.js";
+
 
 export const carregaTarefa = () => {
     const lista = document.querySelector('[data-list]');
@@ -8,7 +9,13 @@ export const carregaTarefa = () => {
 
     lista.innerHTML = " ";
     tarefasCadastradas.forEach((tarefa) => {
-        lista.appendChild(Tarefa(tarefa))
+        const dia = moment(tarefa.dataFormatada, 'DD/MM/YYYY')
+        const diff = data.diff(dia);
+
+        if(diff === 0 ){
+            lista.appendChild(criaData(dia))
+        }
+        
     })
 
 
